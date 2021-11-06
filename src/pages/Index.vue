@@ -14,7 +14,7 @@ export default defineComponent({
   async preFetch ({ store }) {
     const pinia = store as Pinia
     const app = useApp(pinia)
-    await new Promise(resolve => setTimeout(resolve, 25))
+    await new Promise(resolve => setTimeout(resolve, 2225))
     app.msg = app.msg.split('').reverse().join('')
   },
   setup() {
