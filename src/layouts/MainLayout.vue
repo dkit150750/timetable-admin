@@ -74,18 +74,18 @@ import EssentialLink from 'components/EssentialLink.vue';
 import { useUserStore } from 'src/pinia/user';
 import { useRouter } from 'vue-router';
 
+const router = useRouter();
 const leftDrawerOpen = ref(false);
 
 const toggleLeftDrawer = () => {
 	leftDrawerOpen.value = !leftDrawerOpen.value;
 };
 
-const logout = async () => {
+async function logout() {
 	const userStore = useUserStore();
 	userStore.logout();
-	const router = useRouter();
 	await router.push('/login');
-};
+}
 
 const linksList = [
 	{

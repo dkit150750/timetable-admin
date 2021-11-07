@@ -26,6 +26,7 @@ export const useUserStore = defineStore('user', () => {
 
 	function logout() {
 		user.data = null;
+		localStorage.removeItem('user');
 		// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
 		delete api.defaults.headers.common.Authorization;
 	}
