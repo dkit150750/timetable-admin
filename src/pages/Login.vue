@@ -3,27 +3,27 @@
 		<div class="q-pa-md login-form">
 			<q-form @submit="onSubmit" @reset="onReset" class="q-gutter-md">
 				<q-input
-					filled
+					outlined
 					v-model="userModel.login"
 					label="Ваш логин *"
 					:no-error-icon="true"
 					:autofocus="true"
 					lazy-rules
 					:rules="[
-              (val: string) => (val && val.length > 0) || 'Пожалуйста, введите логин',
-            ]"
+						(val: string) => (val && val.length > 0) || 'Пожалуйста, введите логин',
+					]"
 				></q-input>
 
 				<q-input
-					filled
+					outlined
 					type="password"
 					v-model="userModel.password"
 					:no-error-icon="true"
 					label="Ваш пароль *"
 					lazy-rules
 					:rules="[
-              (val: string) => (val && val.length > 0) || 'Пожалуйста, введите пароль',
-            ]"
+						(val: string) => (val && val.length > 0) || 'Пожалуйста, введите пароль',
+					]"
 				></q-input>
 
 				<div>
