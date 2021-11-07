@@ -1,5 +1,5 @@
 <template>
-	<q-item clickable tag="a" target="_blank" :href="link">
+	<q-item clickable :to="link" v-ripple>
 		<q-item-section v-if="icon" avatar>
 			<q-icon :name="icon" />
 		</q-item-section>
@@ -10,7 +10,7 @@
 				{{ caption }}
 			</q-item-label>
 		</q-item-section>
-	</q-item>
+	</q-item>	
 </template>
 
 <script lang="ts">

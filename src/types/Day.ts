@@ -1,7 +1,7 @@
-import Lesson from './Lesson';
+// import Lesson from './Lesson';
 
-export default interface Day {
-	id: number;
-	name: string;
-	lessons: Lesson[];
-}
+// export default interface Day {
+// 	id: number;
+// 	name: string;
+// 	lessons: Lesson[];
+// }

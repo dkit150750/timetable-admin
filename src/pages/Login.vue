@@ -4,7 +4,7 @@
 			<q-form @submit="onSubmit" @reset="onReset" class="q-gutter-md">
 				<q-input
 					filled
-					v-model="payload.login"
+					v-model="userModel.login"
 					label="Ваш логин *"
 					:no-error-icon="true"
 					:autofocus="true"
@@ -17,7 +17,7 @@
 				<q-input
 					filled
 					type="password"
-					v-model="payload.password"
+					v-model="userModel.password"
 					:no-error-icon="true"
 					label="Ваш пароль *"
 					lazy-rules
@@ -42,18 +42,16 @@
 </template>
 
 <script setup lang="ts">
-// import { useStore } from 'vuex';
+import { useUserStore } from 'src/pinia/user';
 import { useQuasar } from 'quasar';
-import AuthService from 'src/services/AuthService';
 import { reactive } from 'vue';
 import { useRouter } from 'vue-router';
 
 const $q = useQuasar();
+const store = useUserStore();
 const router = useRouter();
-// const store = useStore();
-// console.log(store.getters);
 
-const payload = reactive({
+const userModel = reactive({
 	login: 'admin',
 	password: 'password',
 	device_name: 'teleskop',
@@ -61,8 +59,7 @@ const payload = reactive({
 
 const onSubmit = async () => {
 	try {
-		const result = await AuthService.login(payload);
-		console.log(result);
+		await store.login(userModel);
 		await router.push('/');
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	} catch (error: any) {
@@ -77,8 +74,8 @@ const onSubmit = async () => {
 };
 
 const onReset = () => {
-	payload.login = '';
-	payload.password = '';
+	userModel.login = '';
+	userModel.password = '';
 };
 </script>
 

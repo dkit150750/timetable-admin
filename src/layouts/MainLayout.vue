@@ -1,32 +1,53 @@
 <template>
-	<q-layout view="lHh Lpr lFf">
-		<q-header elevated>
+	<q-layout view="hHh LpR fFf">
+		<q-header elevated class="bg-primary text-white">
 			<q-toolbar>
-				<q-btn
-					flat
-					dense
-					round
-					icon="menu"
-					aria-label="Menu"
-					@click="toggleLeftDrawer"
-				/>
+				<q-btn dense flat round icon="menu" @click="toggleLeftDrawer" />
+				<q-toolbar-title>
+					<q-avatar dense>
+						<img
+							src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg"
+						/>
+					</q-avatar>
+					Title
+				</q-toolbar-title>
 
-				<q-toolbar-title> Quasar App </q-toolbar-title>
-
-				<div>Quasar v{{ $q.version }}</div>
+				<TheThemeWrapper />
 			</q-toolbar>
 		</q-header>
 
-		<q-drawer v-model="leftDrawerOpen" show-if-above bordered>
-			<q-list>
-				<q-item-label header> Essential Links </q-item-label>
-
+		<q-drawer
+			:width="250"
+			show-if-above
+			v-model="leftDrawerOpen"
+			side="left"
+			bordered
+		>
+			<q-list padding>
+				<q-item class="items-center justify-between">
+					<span class="text-h6">Menu</span>
+					<q-btn
+						flat
+						color="primary"
+						icon="west"
+						@click="leftDrawerOpen = false"
+					/>
+				</q-item>
 				<EssentialLink
-					v-for="link in essentialLinks"
+					v-for="link in linksList"
 					:key="link.title"
 					v-bind="link"
 				/>
 			</q-list>
+			<q-item class="items-center">
+				<q-btn
+					outline
+					flat
+					color="primary"
+					label="Выход"
+					@click="logout"
+				/>
+			</q-item>
 		</q-drawer>
 
 		<q-page-container>
@@ -36,72 +57,71 @@
 </template>
 
 <script lang="ts">
+import { preFetch } from 'quasar/wrappers';
+import { auth } from 'src/middleware/autch';
+
+export default {
+	preFetch: preFetch((context) => {
+		auth(context);
+	}),
+};
+</script>
+
+<script setup lang="ts">
+import { ref } from 'vue';
+import TheThemeWrapper from 'components/TheThemeWrapper.vue';
 import EssentialLink from 'components/EssentialLink.vue';
+import { useUserStore } from 'src/pinia/user';
+import { useRouter } from 'vue-router';
+
+const leftDrawerOpen = ref(false);
+
+const toggleLeftDrawer = () => {
+	leftDrawerOpen.value = !leftDrawerOpen.value;
+};
+
+const logout = async () => {
+	const userStore = useUserStore();
+	userStore.logout();
+	const router = useRouter();
+	await router.push('/login');
+};
 
 const linksList = [
 	{
-		title: 'Docs',
-		caption: 'quasar.dev',
+		title: 'Глваная',
+		icon: 'home',
+		link: '/',
+	},
+	{
+		title: 'Группы',
 		icon: 'school',
-		link: 'https://quasar.dev',
+		link: '/groups',
 	},
 	{
-		title: 'Github',
-		caption: 'github.com/quasarframework',
-		icon: 'code',
-		link: 'https://github.com/quasarframework',
+		title: 'Изменения',
+		icon: 'change_circle',
+		link: '/changes',
 	},
 	{
-		title: 'Discord Chat Channel',
-		caption: 'chat.quasar.dev',
-		icon: 'chat',
-		link: 'https://chat.quasar.dev',
+		title: 'Преподаватели',
+		icon: 'person_outline ',
+		link: '/teachers',
 	},
 	{
-		title: 'Forum',
-		caption: 'forum.quasar.dev',
-		icon: 'record_voice_over',
-		link: 'https://forum.quasar.dev',
+		title: 'Дисциплины',
+		icon: 'architecture',
+		link: '/disciplines',
 	},
 	{
-		title: 'Twitter',
-		caption: '@quasarframework',
-		icon: 'rss_feed',
-		link: 'https://twitter.quasar.dev',
+		title: 'Кабинеты',
+		icon: 'filter_1',
+		link: '/cabinets',
 	},
 	{
-		title: 'Facebook',
-		caption: '@QuasarFramework',
-		icon: 'public',
-		link: 'https://facebook.quasar.dev',
-	},
-	{
-		title: 'Quasar Awesome',
-		caption: 'Community Quasar projects',
-		icon: 'favorite',
-		link: 'https://awesome.quasar.dev',
+		title: 'Время',
+		icon: 'schedule',
+		link: '/times',
 	},
 ];
-
-import { defineComponent, ref } from 'vue';
-
-export default defineComponent({
-	name: 'MainLayout',
-
-	components: {
-		EssentialLink,
-	},
-
-	setup() {
-		const leftDrawerOpen = ref(false);
-
-		return {
-			essentialLinks: linksList,
-			leftDrawerOpen,
-			toggleLeftDrawer() {
-				leftDrawerOpen.value = !leftDrawerOpen.value;
-			},
-		};
-	},
-});
 </script>

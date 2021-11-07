@@ -1,8 +1,8 @@
-import Time from './Time';
+// import Time from './Time';
 
-type TimeResponse = { data: { data: Time } };
+// type TimeResponse = { data: { data: Time } };
 
-export default interface Service {
-	getItem(): TimeResponse;
-	updateItem(payload: Time): void;
-}
+// export default interface Service {
+// 	getItem(): TimeResponse;
+// 	updateItem(payload: Time): void;
+// }

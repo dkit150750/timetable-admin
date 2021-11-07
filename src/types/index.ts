@@ -19,7 +19,7 @@ export type TeacherType = {
 	name: string;
 };
 
-export type GroupInfo = {
+export type GroupType = {
 	id: number;
 	name: string;
 	slug: string;
