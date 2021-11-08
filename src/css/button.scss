@@ -1,0 +1,73 @@
+// BUTTON
+.q-btn {
+	--q-primary: #2da44e;
+	--q-secondary: #1f6feb;
+}
+
+.q-btn--unelevated .q-focus-helper {
+	display: none !important;
+}
+
+// =====================
+.q-btn--unelevated.q-btn--rectangle {
+	border-radius: 6px;
+	transition: 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+    transition-property: color,background-color,border-color;
+}
+
+.q-btn--unelevated {
+	color: #24292f;
+	background-color: #f6f8fa;
+	border: 1px solid rgba(26, 30, 35, 0.149);
+}
+
+// PRIMARY
+.q-btn--unelevated.bg-primary {
+	background-color: #2da44e;
+	border-color: rgba(27, 31, 36, 0.149);
+	transition: all 0.2s linear;
+}
+
+// BUTTON HOVER
+.q-btn--unelevated:hover {
+	background: #f3f4f6 !important;
+	border-color: rgba(27, 31, 36, 0.149);
+    transition-duration: 0.1s;
+}
+
+.body--dark .q-btn--unelevated.bg-primary:hover {
+	background: #2ea043 !important;
+}
+
+// PRIMARY
+.q-btn--unelevated.bg-primary:hover {
+	background: #2c974b !important;
+	border-color: rgba(27, 31, 36, 0.149);
+}
+
+.body--dark .q-btn--unelevated.bg-primary:hover {
+	background: #2ea043 !important;
+}
+
+// BUTTON FOCUS
+.q-btn--unelevated:focus {
+	border-color: rgba(27, 31, 36, 0.149);
+    box-shadow: 0px 0px 0px 3px rgba(9, 105, 218, 0.3);
+}
+
+
+
+.q-btn--unelevated.bg-primary:focus-visible {
+	box-shadow: 0px 0px 0px 3px rgba(45, 164, 78, 0.4);
+}
+.body--dark .q-btn--unelevated.bg-primary:focus-visible {
+	box-shadow: 0 0 0 0.3em #1d4c2e;
+}
+// BUTTON PRIMARY FOCUS
+.q-btn--unelevated.bg-primary:focus-visible {
+	box-shadow: 0px 0px 0px 3px rgba(45, 164, 78, 0.4);
+}
+.body--dark .q-btn--unelevated.bg-primary:focus-visible {
+	box-shadow: 0 0 0 0.3em #1d4c2e;
+}
+

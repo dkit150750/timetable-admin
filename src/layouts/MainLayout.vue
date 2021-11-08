@@ -20,8 +20,7 @@
 				<q-item class="items-center justify-between">
 					<span class="text-h6">Меню</span>
 					<q-btn
-						outline
-						color="primary"
+						unelevated
 						icon="west"
 						@click="leftDrawerOpen = false"
 					/>
@@ -33,7 +32,7 @@
 				/>
 			</q-list>
 			<q-item class="items-center">
-				<q-btn outline color="primary" label="Выход" @click="logout" />
+				<q-btn unelevated label="Выход" @click="logout" />
 			</q-item>
 		</q-drawer>
 

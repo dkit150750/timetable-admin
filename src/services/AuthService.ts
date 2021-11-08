@@ -17,13 +17,9 @@ export default {
 		api.defaults.headers.common.Authorization = `Bearer ${response.data.user.token}`;
 		return response.data.user;
 	},
-	async hasLogin(payload: {
-		login: string;
-		password: string;
-		device_name: string;
-	}) {
+	async hasLogin(payload: { login: string }) {
 		return (await api.post('/has-login', payload)) as unknown as {
-			data: { hasLogin: boolean };
+			data: { success: boolean; hasLogin: boolean };
 		};
 	},
 };

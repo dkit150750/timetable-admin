@@ -1,0 +1,16 @@
+.q-form-w-320 {
+	max-width: 320px;
+}
+
+//FORM WRAPPER BORDER
+.q-form-wrapper {
+	background-color: #f6f8fa;
+	border: 1px solid #d8dee4;
+	border-radius: 10px;
+}
+
+.body--dark .q-form-wrapper {
+	background-color: #0d1117;
+	border: 1px solid #30363d;
+	border-radius: 10px;
+}

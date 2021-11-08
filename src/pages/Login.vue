@@ -14,7 +14,8 @@
 					:autofocus="true"
 					lazy-rules
 					:rules="[
-						(val: string) => (val && val.length > 0) || 'Пожалуйста, введите логин',
+						hasLogin,
+						(value: string) => (value && value.length > 0) || 'Пожалуйста, введите логин',
 					]"
 				></q-input>
 
@@ -26,7 +27,7 @@
 					label="Ваш пароль *"
 					lazy-rules
 					:rules="[
-						(val: string) => (val && val.length > 0) || 'Пожалуйста, введите пароль',
+						(value: string) => (value && value.length > 0) || 'Пожалуйста, введите пароль',
 					]"
 				>
 					<template v-slot:append>
@@ -38,7 +39,7 @@
 					</template>
 				</q-input>
 
-				<div>
+				<div class="flex justify-between">
 					<q-btn
 						unelevated
 						label="Войти"
@@ -49,7 +50,7 @@
 					<q-btn
 						label="Сбросить"
 						type="reset"
-						color="primary"
+						color="secondary"
 						flat
 						class="q-ml-sm"
 					></q-btn>
@@ -64,6 +65,7 @@ import { useUserStore } from 'src/pinia/user';
 import { useQuasar } from 'quasar';
 import { reactive, ref } from 'vue';
 import { useRouter } from 'vue-router';
+import AuthService from 'src/services/AuthService';
 
 const $q = useQuasar();
 const store = useUserStore();
@@ -76,6 +78,13 @@ const userModel = reactive({
 	password: 'password',
 	device_name: 'teleskop',
 });
+
+const hasLogin = async (login: string) => {
+	const result = await AuthService.hasLogin({ login });
+	console.log(result);
+
+	return result.data.hasLogin || 'Неверный логин';
+};
 
 const onSubmit = async () => {
 	try {
