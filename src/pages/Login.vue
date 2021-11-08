@@ -1,7 +1,11 @@
 <template>
 	<q-page class="q-page row items-center justify-evenly">
-		<div class="q-pa-md login-form">
-			<q-form @submit="onSubmit" @reset="onReset" class="q-gutter-md">
+		<div class="q-pa-lg q-form-wrapper login-form">
+			<q-form
+				@submit="onSubmit"
+				@reset="onReset"
+				class="q-col-gutter-y-md"
+			>
 				<q-input
 					outlined
 					v-model="userModel.login"
@@ -16,18 +20,32 @@
 
 				<q-input
 					outlined
-					type="password"
 					v-model="userModel.password"
 					:no-error-icon="true"
+					:type="isPwd ? 'password' : 'text'"
 					label="Ваш пароль *"
 					lazy-rules
 					:rules="[
 						(val: string) => (val && val.length > 0) || 'Пожалуйста, введите пароль',
 					]"
-				></q-input>
+				>
+					<template v-slot:append>
+						<q-icon
+							:name="isPwd ? 'visibility_off' : 'visibility'"
+							class="cursor-pointer"
+							@click="isPwd = !isPwd"
+						/>
+					</template>
+				</q-input>
 
 				<div>
-					<q-btn label="Войти" type="submit" color="primary"></q-btn>
+					<q-btn
+						unelevated
+						label="Войти"
+						type="submit"
+						color="primary"
+						class="q-ml-none"
+					></q-btn>
 					<q-btn
 						label="Сбросить"
 						type="reset"
@@ -44,12 +62,14 @@
 <script setup lang="ts">
 import { useUserStore } from 'src/pinia/user';
 import { useQuasar } from 'quasar';
-import { reactive } from 'vue';
+import { reactive, ref } from 'vue';
 import { useRouter } from 'vue-router';
 
 const $q = useQuasar();
 const store = useUserStore();
 const router = useRouter();
+
+const isPwd = ref(true);
 
 const userModel = reactive({
 	login: 'admin',
@@ -81,7 +101,7 @@ const onReset = () => {
 
 <style>
 .login-form {
-	max-width: 400px;
+	max-width: 350px;
 	width: 100%;
 }
 </style>
