@@ -3,14 +3,7 @@
 		<q-header elevated class="bg-primary text-white">
 			<q-toolbar>
 				<q-btn dense flat round icon="menu" @click="toggleLeftDrawer" />
-				<q-toolbar-title>
-					<q-avatar dense>
-						<img
-							src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg"
-						/>
-					</q-avatar>
-					Title
-				</q-toolbar-title>
+				<q-toolbar-title> DKIT </q-toolbar-title>
 
 				<TheThemeWrapper />
 			</q-toolbar>
@@ -25,9 +18,9 @@
 		>
 			<q-list padding>
 				<q-item class="items-center justify-between">
-					<span class="text-h6">Menu</span>
+					<span class="text-h6">Меню</span>
 					<q-btn
-						flat
+						outline
 						color="primary"
 						icon="west"
 						@click="leftDrawerOpen = false"
@@ -40,13 +33,7 @@
 				/>
 			</q-list>
 			<q-item class="items-center">
-				<q-btn
-					outline
-					flat
-					color="primary"
-					label="Выход"
-					@click="logout"
-				/>
+				<q-btn outline color="primary" label="Выход" @click="logout" />
 			</q-item>
 		</q-drawer>
 
