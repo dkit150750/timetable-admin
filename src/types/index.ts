@@ -42,3 +42,9 @@ export type ResponseError = {
 		};
 	};
 };
+
+export type ListResponse<T> = {
+	data: { data: T[] };
+};
+
+export type ItemResponse<T> = { data: { data: T } };

@@ -10,7 +10,7 @@
 				{{ caption }}
 			</q-item-label>
 		</q-item-section>
-	</q-item>	
+	</q-item>
 </template>
 
 <script lang="ts">

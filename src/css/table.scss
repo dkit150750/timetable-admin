@@ -1,7 +1,6 @@
-//FORM WRAPPER BORDER
-.q-form-wrapper {
+.q-table__card {
+	box-shadow: none;
 	background-color: var(--container-background);
 	border: 1px solid var(--container-border);
 	border-radius: 10px;
 }
-

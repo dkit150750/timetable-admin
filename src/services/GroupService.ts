@@ -1,32 +1,30 @@
 import { api } from 'src/boot/axios';
-import { GroupType } from 'src/types';
-
-type ListResponse = {
-	data: { data: GroupType[]; meta: { last_page: number } };
-};
-// type ItemResponse = { data: { data: Group } };
+import { GroupType, ItemResponse, ListResponse } from 'src/types';
 
 export default {
-	async getGroups(): Promise<ListResponse> {
-		return (await api.get('/groups')) as unknown as ListResponse;
+	async getList() {
+		return (await api.get('/groups')) as unknown as ListResponse<GroupType>;
 	},
 
-	async getCourseItems(course: number): Promise<ListResponse> {
+	async getCourseItems(course: number) {
 		return (await api.get(
 			`/courses/${course}/groups`
-		)) as unknown as ListResponse;
+		)) as unknown as ListResponse<GroupType>;
 	},
 
 	// async getItem(slug: string): Promise<ItemResponse> {
 	// 	return (await api.get(`/groups/${slug}`)) as unknown as ItemResponse;
 	// },
 
-	// async addItem(payload: {
-	// 	name: string;
-	// 	course: number;
-	// }): Promise<ItemResponse> {
-	// 	return (await api.post('/groups', payload)) as unknown as ItemResponse;
-	// },
+	async addItem(payload: {
+		name: string;
+		course: number;
+	}): Promise<ItemResponse<GroupType>> {
+		return (await api.post(
+			'/groups',
+			payload
+		)) as unknown as ItemResponse<GroupType>;
+	},
 
 	// async updateItem(
 	// 	id: number,

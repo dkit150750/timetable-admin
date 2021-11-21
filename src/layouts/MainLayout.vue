@@ -1,6 +1,6 @@
 <template>
 	<q-layout view="hHh LpR fFf">
-		<q-header elevated class="bg-primary text-white">
+		<q-header elevated class="text-white">
 			<q-toolbar>
 				<q-btn dense flat round icon="menu" @click="toggleLeftDrawer" />
 				<q-toolbar-title> DKIT </q-toolbar-title>
@@ -17,7 +17,9 @@
 			bordered
 		>
 			<q-list padding>
-				<q-item class="items-center justify-between">
+				<q-item
+					class="items-center justify-between mobile-nav-controller"
+				>
 					<span class="text-h6">Меню</span>
 					<q-btn
 						unelevated
@@ -75,7 +77,7 @@ async function logout() {
 
 const linksList = [
 	{
-		title: 'Глваная',
+		title: 'Главная',
 		icon: 'home',
 		link: '/',
 	},
@@ -111,3 +113,11 @@ const linksList = [
 	},
 ];
 </script>
+
+<style lang="scss">
+.mobile-nav-controller {
+	@media (min-width: 768px) {
+		display: none;
+	}
+}
+</style>

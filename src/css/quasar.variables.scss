@@ -23,7 +23,17 @@ $negative: #ff001c;
 $info: #31ccec;
 $warning: #f2c037;
 
+:root {
+	--container-background: #f6f8fa;
+	--container-border: #d8dee4;
+	--field-background: #ffffff;
+}
+
 .body--dark {
+	--container-background: #0d1117;
+	--container-border: #30363d;
+	--field-background: #000000;
+	--q-primary: #58a6ff;
 	--q-secondary: #238636;
 	--q-negative: #f44336;
 }

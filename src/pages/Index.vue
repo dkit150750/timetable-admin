@@ -3,5 +3,3 @@
 		<!-- <q-input v-model="msg"></q-input> -->
 	</q-page>
 </template>
-
-

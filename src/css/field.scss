@@ -1,5 +1,9 @@
 //FIELD
-.q-field__control {
+.q-field--outlined .q-field__inner {
+	--q-primary: #1f6feb;
+}
+
+.q-field--outlined .q-field__control {
 	transition: none;
 }
 
@@ -7,56 +11,62 @@
 	border-radius: 10px;
 }
 
-
 //FIELD BORDER
-.q-field__control:before,
-.q-field__control::after {
-	border: 1px solid hsla(0, 0%, 0%, 0.24);
+.q-field--outlined .q-field__control::before,
+.q-field--outlined .q-field__control::after {
+	border: 2px solid hsla(0, 0%, 0%, 0.24);
 	transition: none;
 }
 
-.q-field--dark .q-field__control:before {
+.q-field--outlined.q-field--dark .q-field__control:before {
 	border-color: hsl(212, 12%, 21%);
 }
 
-.q-field__control:hover:before {
+.q-field--outlined .q-field__control:hover:before {
 	border-color: #000000 !important;
 }
 
-.q-field--dark .q-field__control:hover:before {
+.q-field--outlined.q-field--dark .q-field__control:hover:before {
 	border-color: #d8dee4 !important;
 }
 
-//FIELD BACGROUND
-.q-field__control {
-	background-color: #ffffff;
-}
-
-.q-field--dark .q-field__control {
-	background-color: #000000;
+//FIELD BACkGROUND
+.q-field--outlined .q-field__control {
+	background-color: var(--field-background);
 }
 
 //FIELD LABEL
-.q-field--error .q-field__label {
+.q-field--outlined .q-field--error .q-field__label {
 	animation: none !important;
 }
 
-.q-field--dark .q-field__label {
+.q-field--outlined .q-field--dark .q-field__label {
 	color: rgba(255, 255, 255, 0.7);
 }
 
 //FIELD FOCUS
-.q-field--focused .q-field__control {
+.q-field--outlined.q-field--focused .q-field__control {
 	box-shadow: 0 0 0 0.3em #bdd2f4;
 }
-.q-field--dark.q-field--focused .q-field__control {
+.q-field--outlined.q-field--dark.q-field--focused .q-field__control {
 	box-shadow: 0 0 0 0.3em #0d2d6b;
 }
 
+.q-field--focused:not(.q-field--outlined) .q-field__control {
+	box-shadow: 0 0 0 2px #153f94;
+}
+
 //FIELD FOCUS ERROR
-.q-field--focused.q-field--error .q-field__control {
+.q-field--outlined.q-field--focused.q-field--error .q-field__control {
 	box-shadow: 0 0 0 0.3em rgba(255, 0, 30, 0.3);
 }
-.q-field--dark.q-field--focused.q-field--error .q-field__control {
+.q-field--outlined.q-field--dark.q-field--focused.q-field--error
+	.q-field__control {
 	box-shadow: 0 0 0 0.3em rgba(244, 67, 54, 0.3);
 }
+
+// .................
+// .q-field__native {
+// 	padding-left: 6px;
+// 	padding-right: 6px;
+// }

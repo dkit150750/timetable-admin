@@ -3,6 +3,7 @@
 @import './button.scss';
 @import './form.scss';
 @import './field.scss';
+@import './table.scss';
 
 // BODY
 .body--dark {
@@ -12,4 +13,23 @@
 // HEADER
 .q-header {
 	background-color: #24292f;
+}
+
+
+.w-320 {
+	max-width: 320px;
+}
+
+.w-700 {
+	max-width: 700px;
+}
+
+.groups-grid {
+	display: flex;
+	gap: 20px;
+	flex-wrap: wrap;
+}
+
+.groups-grid > * {
+	width: 100%;
 }
